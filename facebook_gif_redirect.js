@@ -3,6 +3,10 @@ var app = express();
 var url = require('url');
 var http = require('http');
 
+app.listen(process.env.PORT || 3000, function () {
+    console.log('Example app listening on port 3000!');
+})
+
 app.get('/fish.gif', function(request_from_client, response_to_client){
     var agent = request_from_client['headers']['user-agent'].toLowerCase();
     var isFacebook = agent.indexOf('vision') > -1 || agent.indexOf('facebook') > -1;
