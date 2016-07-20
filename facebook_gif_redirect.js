@@ -13,6 +13,9 @@ app.get('/facebook.gif', function(request_from_client, response_to_client){
     var agent = request_from_client['headers']['user-agent'].toLowerCase();
     var isFacebook = agent.indexOf('vision') > -1 || agent.indexOf('facebook') > -1;
 
+// Redirect URL
+const redirectUrl = 'http://www.tgwg.co';
+
     if(!isFacebook && redirectUrl) {
         response_to_client.writeHead(302, {
             'Location': redirectUrl,
