@@ -16,14 +16,14 @@ app.get('/facebookgif', function(request_from_client, response_to_client){
 // Redirect URL
 const redirectUrl = 'http://www.thatoneguywithglasses.com';
 
-    if(!isFacebook && redirectUrl) {
-        response_to_client.writeHead(302, {
-            'Location': redirectUrl,
-        });
-        response_to_client.end();
-
-        return;
-    }
+if(!isFacebook) {  
+    // Redirect to the redirect URL
+    res.writeHead(302, {
+        'Location': redirectUrl,
+    });
+    // Close the connection
+    return res.end();
+}
 
     var image_host_name = url.parse(imageUrl).hostname
     var http_client = http.createClient(80, image_host_name);
